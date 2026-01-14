@@ -138,7 +138,7 @@ export const verifyEsewaPayment = async (req, res) => {
                     pointsToAward = Math.floor(Math.random() * (20 - 10 + 1)) + 10;
                     user.groceryPoints += pointsToAward;
                     order.pointsAwarded = pointsToAward;
-                    messageParts.push(`You earned ${pointsToAward} Grocery Points.`);
+                    messageParts.push(`You earned ${pointsToAward} Gadget Points.`);
                     console.log(`[eSewa] Awarded ${pointsToAward} points to ${user.email}. New total: ${user.groceryPoints}`);
                 }
 

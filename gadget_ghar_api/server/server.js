@@ -114,7 +114,7 @@ app.use("/api/payment", paymentRoutes);
 
 
 app.get("/", (req, res) => {
-  res.status(200).send("Welcome to the nepgrocery-backend API!");
+  res.status(200).send("Welcome to the gadget_ghar-backend API!");
 });
 
 

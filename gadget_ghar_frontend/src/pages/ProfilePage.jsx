@@ -221,7 +221,7 @@ const ProfilePage = () => {
                 <div className="flex items-center gap-4">
                     <Gift className="text-green-500" size={32} />
                     <div>
-                        <h3 className="text-lg font-bold text-gray-800">Grocery Points</h3>
+                        <h3 className="text-lg font-bold text-gray-800">Gadget Points</h3>
                         <p className="text-3xl font-bold text-green-600">{points}</p>
                     </div>
                 </div>

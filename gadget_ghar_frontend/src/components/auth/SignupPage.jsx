@@ -106,9 +106,9 @@ const SignupPage = () => {
           <div className="md:w-1/2 bg-gradient-to-br from-green-500 to-teal-600 p-10 text-white flex flex-col justify-center items-center relative overflow-hidden order-last md:order-first">
             <div className="absolute top-0 left-0 w-full h-full bg-opacity-20 bg-pattern"></div>
             <div className="relative z-10 text-center">
-              <h2 className="text-4xl font-extrabold mb-4">Join NepGrocery!</h2>
+              <h2 className="text-4xl font-extrabold mb-4">Join Gadget_Ghar!</h2>
               <p className="text-lg text-green-100 mb-8">
-                Create an account and start your fresh grocery journey today.
+                Create an account and start your tech journey today.
               </p>
 
               {/* Lottie Animation */}

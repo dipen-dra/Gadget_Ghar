@@ -207,7 +207,7 @@ const LoginPage = () => {
                             <p className="text-lg text-green-100 mb-8">
                                 {requires2FA
                                     ? `We sent a code to ${maskedEmail} to verify it's really you.`
-                                    : "Sign in to continue your fresh grocery journey with NepGrocery."}
+                                    : "Sign in to continue your tech journey with Gadget_Ghar."}
                             </p>
 
                             <div className="w-full max-w-sm mx-auto bg-white/10 backdrop-blur-sm rounded-xl p-4">

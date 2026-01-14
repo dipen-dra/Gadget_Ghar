@@ -182,9 +182,9 @@
 //         const resetUrl = `${process.env.CLIENT_URL}/reset-password/${token}`;
 
 //         const mailOptions = {
-//             from: `'Hamro Grocery' <${process.env.EMAIL_USER}>`,
+//             from: `'Gadget_Ghar' <${process.env.EMAIL_USER}>`,
 //             to: email,
-//             subject: "Reset Your Grocery Password",
+//             subject: "Reset Your Gadget_Ghar Password",
 //             html: `
 //                 <p>Hello ${user.fullName},</p>
 //                 <p>You requested a password reset. Please click the link below to create a new password:</p>
@@ -331,7 +331,7 @@ const sendOtpEmail = async (email, otp) => {
     });
 
     const mailOptions = {
-        from: `'NepGrocery' <${process.env.EMAIL_USER}>`,
+        from: `'Gadget_Ghar' <${process.env.EMAIL_USER}>`,
         to: email,
         subject: "Your Login OTP",
         html: `
@@ -627,9 +627,9 @@ export const sendResetLink = async (req, res) => {
         console.log("DEBUG: Generated Reset URL:", resetUrl);
 
         const mailOptions = {
-            from: `'NepGrocery' <${process.env.EMAIL_USER}>`,
+            from: `'Gadget_Ghar' <${process.env.EMAIL_USER}>`,
             to: user.email,
-            subject: "Reset Your NepGrocery Password",
+            subject: "Reset Your Gadget_Ghar Password",
             html: `
                 <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
                     <h2 style="color: #2c5282;">Password Reset Request</h2>
@@ -640,7 +640,7 @@ export const sendResetLink = async (req, res) => {
                     </p>
                     <p>If you did not request this, please ignore this email. Your password will not be changed.</p>
                     <hr style="border: none; border-top: 1px solid #eee;" />
-                    <p style="font-size: 0.8em; color: #777;">NepGrocery Team</p>
+                    <p style="font-size: 0.8em; color: #777;">Gadget_Ghar Team</p>
                 </div>
             `,
         };
