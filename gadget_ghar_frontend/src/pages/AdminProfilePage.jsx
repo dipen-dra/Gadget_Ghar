@@ -54,7 +54,7 @@ const ProfileInputField = ({ name, value, onChange, label, placeholder, type = "
             value={value}
             onChange={onChange}
             placeholder={placeholder}
-            className="mt-1 w-full p-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition"
+            className="mt-1 w-full p-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition"
         />
     </div>
 );
@@ -146,7 +146,7 @@ const AdminProfilePage = () => {
     };
 
     if (!user) {
-        return <div className="flex justify-center items-center h-full"><Loader2 className="animate-spin text-green-600" size={48} /></div>;
+        return <div className="flex justify-center items-center h-full"><Loader2 className="animate-spin text-sky-600" size={48} /></div>;
     }
 
     return (
@@ -159,7 +159,7 @@ const AdminProfilePage = () => {
                         <p className="text-gray-600 mt-1">Manage your profile details and preferences.</p>
                     </div>
                     {!isEditMode && (
-                        <button onClick={() => setIsEditMode(true)} className="flex items-center justify-center gap-2 px-5 py-2.5 bg-green-600 text-white font-semibold rounded-lg shadow-sm hover:bg-green-700 transition-all duration-300 transform hover:scale-105">
+                        <button onClick={() => setIsEditMode(true)} className="flex items-center justify-center gap-2 px-5 py-2.5 bg-sky-600 text-white font-semibold rounded-lg shadow-sm hover:bg-sky-700 transition-all duration-300 transform hover:scale-105">
                             <Edit size={16} /> Edit Profile
                         </button>
                     )}
@@ -204,7 +204,7 @@ const AdminProfilePage = () => {
                                         <div>
                                             <label htmlFor="location" className="text-sm font-medium text-gray-700">Location</label>
                                             <div className="mt-1 flex gap-2">
-                                                <input id="location" name="location" type="text" value={formData.location} onChange={handleInputChange} placeholder="Click pin to fetch location" className="flex-grow p-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition" />
+                                                <input id="location" name="location" type="text" value={formData.location} onChange={handleInputChange} placeholder="Click pin to fetch location" className="flex-grow p-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition" />
                                                 <button type="button" onClick={handleFetchLocation} disabled={isFetchingLocation} className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center justify-center transition disabled:opacity-50 disabled:cursor-not-allowed">
                                                     {isFetchingLocation ? <Loader2 className="animate-spin" /> : <MapPin />}
                                                 </button>
@@ -219,7 +219,7 @@ const AdminProfilePage = () => {
                                                 type="checkbox"
                                                 checked={formData.twoFactorEnabled}
                                                 onChange={(e) => setFormData(prev => ({ ...prev, twoFactorEnabled: e.target.checked }))}
-                                                className="w-5 h-5 text-green-600 rounded focus:ring-green-500 border-gray-300"
+                                                className="w-5 h-5 text-sky-600 rounded focus:ring-sky-500 border-gray-300"
                                             />
                                             <label htmlFor="twoFactorEnabled" className="text-sm font-medium text-gray-700 cursor-pointer">
                                                 Enable Two-Factor Authentication (2FA)
@@ -234,9 +234,9 @@ const AdminProfilePage = () => {
                                         <ProfileInfoField icon={KeyRound} label="Role" value={user.role} />
                                         <div className="col-span-1 md:col-span-2 mt-4 p-4 bg-blue-50 rounded-lg border border-blue-100">
                                             <div className="flex items-center gap-3">
-                                                <div className={`w-3 h-3 rounded-full ${user.twoFactorEnabled ? 'bg-green-500' : 'bg-red-500'}`}></div>
+                                                <div className={`w-3 h-3 rounded-full ${user.twoFactorEnabled ? 'bg-sky-500' : 'bg-red-500'}`}></div>
                                                 <span className="font-medium text-gray-700">
-                                                    Two-Factor Authentication is <span className={user.twoFactorEnabled ? 'text-green-700 font-bold' : 'text-red-700 font-bold'}>{user.twoFactorEnabled ? 'ENABLED' : 'DISABLED'}</span>
+                                                    Two-Factor Authentication is <span className={user.twoFactorEnabled ? 'text-sky-700 font-bold' : 'text-red-700 font-bold'}>{user.twoFactorEnabled ? 'ENABLED' : 'DISABLED'}</span>
                                                 </span>
                                             </div>
                                             <p className="text-xs text-gray-500 mt-1 ml-6">
@@ -255,7 +255,7 @@ const AdminProfilePage = () => {
                                     <button type="button" onClick={handleCancelEdit} className="px-5 py-2.5 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition">
                                         Cancel
                                     </button>
-                                    <button type="submit" disabled={profileUpdateMutation.isLoading} className="flex items-center justify-center gap-2 px-5 py-2.5 bg-green-600 text-white font-semibold rounded-lg shadow-sm hover:bg-green-700 transition disabled:opacity-50">
+                                    <button type="submit" disabled={profileUpdateMutation.isLoading} className="flex items-center justify-center gap-2 px-5 py-2.5 bg-sky-600 text-white font-semibold rounded-lg shadow-sm hover:bg-sky-700 transition disabled:opacity-50">
                                         {profileUpdateMutation.isLoading ? <Loader2 className="animate-spin" /> : <><Save size={16} /> Save Changes</>}
                                     </button>
                                 </div>

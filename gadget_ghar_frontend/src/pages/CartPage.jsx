@@ -13,7 +13,7 @@ const CartPage = () => {
             <div className="text-center p-12 bg-white rounded-lg shadow-sm">
                 <ShoppingCart size={64} className="mx-auto text-gray-300" />
                 <h2 className="mt-6 text-2xl font-semibold text-gray-800">Your cart is empty</h2>
-                <Link to="/dashboard/shop" className="mt-6 inline-block bg-green-600 text-white font-bold py-3 px-8 rounded-full hover:bg-green-700 transition">
+                <Link to="/dashboard/shop" className="mt-6 inline-block bg-sky-600 text-white font-bold py-3 px-8 rounded-full hover:bg-sky-700 transition">
                     Start Shopping
                 </Link>
             </div>
@@ -26,21 +26,21 @@ const CartPage = () => {
                 <div className="flex justify-between items-center border-b pb-4 mb-4">
                     <h1 className="text-2xl font-semibold">Your Cart ({cartItems.length} items)</h1>
                     <button onClick={clearCart} className="text-red-500 hover:text-red-700 font-semibold text-sm flex items-center gap-1">
-                        <Trash2 size={16}/> Clear Cart
+                        <Trash2 size={16} /> Clear Cart
                     </button>
                 </div>
                 <div className="divide-y">
                     {cartItems.map(item => (
                         <div key={item._id} className="flex items-center gap-4 py-4">
-                            <img src={item.imageUrl} alt={item.name} className="w-20 h-20 object-cover rounded-md"/>
+                            <img src={item.imageUrl} alt={item.name} className="w-20 h-20 object-cover rounded-md" />
                             <div className="flex-grow">
                                 <h3 className="font-semibold">{item.name}</h3>
                                 <p className="text-sm text-gray-500">₹{item.price}</p>
                             </div>
                             <div className="flex items-center gap-3 bg-gray-100 rounded-full">
-                                <button onClick={() => updateQuantity(item._id, item.quantity - 1)} className="p-2 text-gray-600 hover:text-red-500"><Minus size={16}/></button>
+                                <button onClick={() => updateQuantity(item._id, item.quantity - 1)} className="p-2 text-gray-600 hover:text-red-500"><Minus size={16} /></button>
                                 <span className="w-8 text-center font-semibold">{item.quantity}</span>
-                                <button onClick={() => updateQuantity(item._id, item.quantity + 1)} className="p-2 text-gray-600 hover:text-green-500"><Plus size={16}/></button>
+                                <button onClick={() => updateQuantity(item._id, item.quantity + 1)} className="p-2 text-gray-600 hover:text-sky-500"><Plus size={16} /></button>
                             </div>
                             <p className="font-semibold w-20 text-right">₹{(item.price * item.quantity).toFixed(2)}</p>
                             <button onClick={() => removeFromCart(item._id)} className="text-gray-400 hover:text-red-600 p-2">
@@ -58,8 +58,8 @@ const CartPage = () => {
                         <div className="flex justify-between"><span>Delivery Fee</span><span>₹{deliveryFee.toFixed(2)}</span></div>
                         <div className="flex justify-between font-bold text-lg border-t pt-4 mt-2"><span>Total</span><span>₹{(totalAmount + deliveryFee).toFixed(2)}</span></div>
                     </div>
-                    <Link to="/dashboard/checkout" className="mt-6 w-full bg-green-600 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-green-700">
-                        Proceed to Checkout <ArrowRight size={20}/>
+                    <Link to="/dashboard/checkout" className="mt-6 w-full bg-sky-600 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-sky-700">
+                        Proceed to Checkout <ArrowRight size={20} />
                     </Link>
                 </div>
             </div>

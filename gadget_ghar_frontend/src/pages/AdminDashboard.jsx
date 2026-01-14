@@ -152,14 +152,14 @@ const UsersPage = () => {
                                         <td className="p-3 text-gray-600">{user.email}</td>
                                         <td className="p-3 text-gray-600">{new Date(user.createdAt).toLocaleDateString()}</td>
                                         <td className="p-3 text-center">
-                                            <span className={`px-2 py-1 rounded-full text-xs font-semibold ${user.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                                            <span className={`px-2 py-1 rounded-full text-xs font-semibold ${user.isActive ? 'bg-sky-100 text-sky-800' : 'bg-red-100 text-red-800'}`}>
                                                 {user.isActive ? 'Active' : 'Banned'}
                                             </span>
                                         </td>
                                         <td className="p-3 text-center">
                                             <button
                                                 onClick={() => handleToggleClick(user)}
-                                                className={`p-2 rounded-full transition-colors ${user.isActive ? 'text-red-500 hover:bg-red-50' : 'text-green-500 hover:bg-green-50'}`}
+                                                className={`p-2 rounded-full transition-colors ${user.isActive ? 'text-red-500 hover:bg-red-50' : 'text-sky-500 hover:bg-sky-50'}`}
                                                 title={user.isActive ? "Deactivate User" : "Activate User"}
                                             >
                                                 {user.isActive ? <Trash2 size={18} /> : <CheckCircle size={18} />}
@@ -193,7 +193,7 @@ const PIE_COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF'];
 
 const getStatusColor = (status) => {
     switch (status) {
-        case 'Delivered': return 'bg-green-100 text-green-800';
+        case 'Delivered': return 'bg-sky-100 text-sky-800';
         case 'Shipped': return 'bg-yellow-100 text-yellow-800';
         case 'Pending': return 'bg-blue-100 text-blue-800';
         case 'Cancelled': return 'bg-red-100 text-red-800';
@@ -337,7 +337,7 @@ const DashboardPage = () => {
             <h1 className="text-3xl font-bold text-gray-800">Admin Dashboard</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <Card className="hover:border-blue-500 border-2 border-transparent"><div className="flex items-center gap-4"><div className="p-3 bg-blue-100 rounded-full"><DollarSign className="text-blue-600" size={28} /></div><div><p className="text-gray-500 text-sm">Total Revenue</p><p className="text-2xl font-bold text-gray-800">₹{safeStats.totalRevenue?.toLocaleString()}</p></div></div></Card>
-                <Card className="hover:border-green-500 border-2 border-transparent"><div className="flex items-center gap-4"><div className="p-3 bg-green-100 rounded-full"><ClipboardList className="text-green-600" size={28} /></div><div><p className="text-gray-500 text-sm">Total Orders</p><p className="text-2xl font-bold text-gray-800">{safeStats.totalOrders}</p></div></div></Card>
+                <Card className="hover:border-sky-500 border-2 border-transparent"><div className="flex items-center gap-4"><div className="p-3 bg-sky-100 rounded-full"><ClipboardList className="text-sky-600" size={28} /></div><div><p className="text-gray-500 text-sm">Total Orders</p><p className="text-2xl font-bold text-gray-800">{safeStats.totalOrders}</p></div></div></Card>
                 <Card className="hover:border-indigo-500 border-2 border-transparent"><div className="flex items-center gap-4"><div className="p-3 bg-indigo-100 rounded-full"><Users className="text-indigo-600" size={28} /></div><div><p className="text-gray-500 text-sm">Total Customers</p><p className="text-2xl font-bold text-gray-800">{safeStats.totalCustomers}</p></div></div></Card>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
@@ -704,7 +704,7 @@ const AdminDashboard = () => {
                 }
                 setIsSidebarOpen(false);
             }}
-            className={`flex items-center gap-4 px-4 py-3 rounded-lg transition-colors duration-200 ${activePage === page ? 'bg-green-600 text-white font-semibold shadow-lg' : 'text-gray-600 hover:bg-gray-200'}`}
+            className={`flex items-center gap-4 px-4 py-3 rounded-lg transition-colors duration-200 ${activePage === page ? 'bg-sky-600 text-white font-semibold shadow-lg' : 'text-gray-600 hover:bg-gray-200'}`}
         >
             <Icon size={22} /><span className="text-md">{children}</span>
         </a>
@@ -760,7 +760,7 @@ const AdminDashboard = () => {
             <div className="fixed bottom-6 right-6 z-30">
                 <button
                     onClick={toggleChatbot}
-                    className="p-4 bg-green-600 text-white rounded-full shadow-lg hover:bg-green-700 transition-transform transform hover:scale-110"
+                    className="p-4 bg-sky-600 text-white rounded-full shadow-lg hover:bg-sky-700 transition-transform transform hover:scale-110"
                     aria-label="Toggle Chatbot"
                 >
                     {isChatbotVisible ? <X size={24} /> : <MessageSquare size={24} />}

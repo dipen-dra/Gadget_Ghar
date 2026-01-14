@@ -12,9 +12,9 @@ const NotFoundPage = () => {
                     </div>
                 </div>
 
-                <h1 className="text-9xl font-extrabold text-green-600 tracking-tight">404</h1>
+                <h1 className="text-9xl font-extrabold text-sky-600 tracking-tight">404</h1>
 
-                <div className="bg-green-600 px-2 text-sm rounded rotate-12 absolute opacity-80 shadow-lg hidden md:block" style={{ top: '35%', left: '48%' }}>
+                <div className="bg-sky-600 px-2 text-sm rounded rotate-12 absolute opacity-80 shadow-lg hidden md:block" style={{ top: '35%', left: '48%' }}>
                     Page Not Found
                 </div>
 
@@ -28,7 +28,7 @@ const NotFoundPage = () => {
                 <div className="mt-10 flex items-center justify-center gap-4">
                     <Link
                         to="/"
-                        className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-all duration-200"
+                        className="inline-flex items-center gap-2 rounded-lg bg-sky-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 transition-all duration-200"
                     >
                         <Home className="w-5 h-5" />
                         Go Back Home
@@ -37,7 +37,7 @@ const NotFoundPage = () => {
             </div>
 
             <div className="mt-12 text-sm text-gray-400">
-                Are you lost? <Link to="/" className="text-green-600 hover:underline">Click here</Link> to browse our groceries.
+                Are you lost? <Link to="/" className="text-sky-600 hover:underline">Click here</Link> to browse our groceries.
             </div>
         </div>
     );

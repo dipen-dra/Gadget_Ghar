@@ -31,13 +31,13 @@ const corsOptions = {
     if (!origin) return callback(null, true);
 
     const allowedOrigins = [
-      "https://localhost:5173",
+      "http://localhost:5173",
       process.env.CLIENT_URL
     ];
 
     // Allow any 192.168.x.x origin (Local Network)
     // RegExp to match http://192.168.X.X:5173
-    const localNetworkRegex = /^https:\/\/192\.168\.\d{1,3}\.\d{1,3}:5173$/;
+    const localNetworkRegex = /^http:\/\/192\.168\.\d{1,3}\.\d{1,3}:5173$/;
 
     if (allowedOrigins.includes(origin) || localNetworkRegex.test(origin)) {
       callback(null, true);
@@ -124,24 +124,10 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 8081;
 
 let server;
-try {
-  const httpsOptions = {
-    key: fs.readFileSync(path.join(__dirname, 'server.key')),
-    cert: fs.readFileSync(path.join(__dirname, 'server.cert')),
-  };
-
-  server = https.createServer(httpsOptions, app).listen(PORT, () => {
-    console.log(`🔐 Secure Server running at https://localhost:${PORT}`);
-    console.log(`🔐 Network Access: https://192.168.1.110:${PORT}`);
-  });
-} catch (error) {
-  console.error("⚠️  HTTPS Error: SSL Certificates (server.key, server.cert) not found or invalid.");
-  console.error("⚠️  Falling back to HTTP for development. Please generate certificates to enable End-to-End Encryption.");
-
-  server = app.listen(PORT, () => {
-    console.log(`⚠️  Insecure Server running at http://localhost:${PORT} and http://192.168.1.110:${PORT}`);
-  });
-}
+server = app.listen(PORT, () => {
+  console.log(`⚠️  Insecure Server running at http://localhost:${PORT}`);
+  console.log(`⚠️  Network Access: http://192.168.1.110:${PORT}`);
+});
 
 
 export { app, server };

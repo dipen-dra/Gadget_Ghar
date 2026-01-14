@@ -14,7 +14,7 @@ const getStatusChip = (paymentItem) => {
 
     if (paymentItem.status === 'Cancelled' && paymentItem.transactionId) {
         return (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-full bg-sky-100 text-sky-800">
                 <CheckCircle2 size={14} />
                 Successful
             </span>
@@ -34,7 +34,7 @@ const getStatusChip = (paymentItem) => {
 
     if (paymentItem.paymentMethod === 'COD' && paymentItem.status === 'Delivered') {
         return (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-full bg-sky-100 text-sky-800">
                 <CheckCircle2 size={14} />
                 Successful
             </span>
@@ -44,7 +44,7 @@ const getStatusChip = (paymentItem) => {
 
     if (paymentItem.transactionId) {
         return (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold rounded-full bg-sky-100 text-sky-800">
                 <CheckCircle2 size={14} />
                 Successful
             </span>
@@ -72,7 +72,7 @@ export const PaymentHistoryPage = () => {
     }, [queryClient]);
 
     if (isLoading) {
-        return <div className="flex justify-center items-center py-12"><Loader2 className="animate-spin text-green-600" size={32} /></div>;
+        return <div className="flex justify-center items-center py-12"><Loader2 className="animate-spin text-sky-600" size={32} /></div>;
     }
 
     if (isError) {

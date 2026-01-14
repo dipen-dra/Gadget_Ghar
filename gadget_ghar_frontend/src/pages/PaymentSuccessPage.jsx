@@ -41,13 +41,13 @@ export const PaymentSuccessPage = () => {
         <div className="flex flex-col items-center justify-center min-h-[70vh] text-center p-4">
             {isLoading ? (
                 <>
-                    <Loader2 className="h-16 w-16 text-green-600 animate-spin" />
+                    <Loader2 className="h-16 w-16 text-sky-600 animate-spin" />
                     <h1 className="text-2xl font-bold mt-4">Verifying Payment...</h1>
                     <p className="text-gray-500 mt-2">Please wait while we confirm your transaction and update your account.</p>
                 </>
             ) : (
                 <>
-                    <CheckCircle className="h-16 w-16 text-green-600" />
+                    <CheckCircle className="h-16 w-16 text-sky-600" />
                     <h1 className="text-2xl font-bold mt-4">Success!</h1>
                     <p className="text-gray-600 mt-2 max-w-md">{message}</p>
                     <p className="text-gray-500 mt-6">Redirecting to your orders page shortly...</p>

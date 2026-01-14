@@ -4,13 +4,12 @@ import api from '../../api/api';
 import { GoogleLogin } from '@react-oauth/google';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Lottie from "lottie-react";
-import groceryAnimation from '../../assets/grocery-animation.json';
-import Navbar from '../Navbar';
+import { Mail, Lock, User, Eye, EyeOff, ArrowRight, AlertCircle, Loader2 } from 'lucide-react';
 import { useRegisterUser } from '../../hooks/useRegisterUser';
 import TermsModal from '../TermsModal';
-
 import ReCAPTCHA from "react-google-recaptcha";
+import Lottie from "lottie-react";
+import signupAnimation from "../../assets/Login_GadgetGhar.json";
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -39,8 +38,6 @@ const SignupPage = () => {
 
   const { mutate: registerUser, isLoading: isSubmitting } = useRegisterUser();
 
-
-
   const checkNameInPassword = (fullName, password) => {
     if (!fullName || !password) return false;
     const nameParts = fullName.trim().toLowerCase().split(/\s+/);
@@ -51,8 +48,6 @@ const SignupPage = () => {
     const { name, value } = e.target;
     setFormData(prev => {
       const updated = { ...prev, [name]: value };
-
-      // Check Name in Password whenever either changes
       if (name === 'password' || name === 'fullName') {
         const hasName = checkNameInPassword(updated.fullName, updated.password);
         setNameInPasswordError(hasName ? 'Password cannot contain your name.' : '');
@@ -73,11 +68,11 @@ const SignupPage = () => {
       return;
     }
     if (!agreedToTerms) {
-      toast.error('You must agree to the Terms and Conditions to sign up.');
+      toast.error('You must agree to the Terms and Conditions.');
       return;
     }
     if (passwordStrength !== 'Strong') {
-      toast.error("Please choose a strong password (min 8 chars, uppercase, number, & symbol).");
+      toast.error("Please choose a strong password.");
       return;
     }
     registerUser({ ...formData, captchaToken }, {
@@ -92,194 +87,211 @@ const SignupPage = () => {
     });
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(prevState => !prevState);
-  };
-
   return (
-    <>
-      <Navbar />
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 pt-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+    <div className="min-h-screen flex bg-white">
+      {/* LEFT SIDE: Brand / Visuals */}
+      <div className="hidden lg:flex lg:w-1/2 bg-slate-900 text-white flex-col justify-between p-12 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 to-slate-800 z-0"></div>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
 
-          {/* Left Side - Animation & Welcome */}
-          <div className="md:w-1/2 bg-gradient-to-br from-green-500 to-teal-600 p-10 text-white flex flex-col justify-center items-center relative overflow-hidden order-last md:order-first">
-            <div className="absolute top-0 left-0 w-full h-full bg-opacity-20 bg-pattern"></div>
-            <div className="relative z-10 text-center">
-              <h2 className="text-4xl font-extrabold mb-4">Join Gadget_Ghar!</h2>
-              <p className="text-lg text-green-100 mb-8">
-                Create an account and start your tech journey today.
-              </p>
+        <div className="relative z-10">
+          <Link to="/" className="flex items-center gap-3">
+            <img src="/Gadget_logo.png" alt="Gadget_Ghar" className="h-10 w-auto" />
+            <span className="text-xl font-bold tracking-tight">Gadget_Ghar</span>
+          </Link>
+        </div>
 
-              {/* Lottie Animation */}
-              <div className="w-full max-w-sm mx-auto bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <Lottie
-                  animationData={groceryAnimation}
-                  loop={true}
-                  className="h-64 w-full"
-                />
-              </div>
-            </div>
+        <div className="relative z-10 flex flex-col items-center justify-center flex-grow">
+          <div className="w-full max-w-md">
+            <Lottie animationData={signupAnimation} loop={true} />
           </div>
-
-          {/* Right Side - Signup Form */}
-          <div className="md:w-1/2 p-10 sm:p-12 flex flex-col justify-center">
-            <div className="w-full max-w-md mx-auto">
-              <div className="text-center md:text-left mb-8">
-                <h3 className="text-3xl font-bold text-gray-900">Create an Account</h3>
-                <p className="text-gray-500 mt-2">Please fill in your details to sign up.</p>
-              </div>
-
-              <form className="space-y-5" onSubmit={handleSubmit}>
-                {/* Full Name Input */}
-                <div>
-                  <label className="text-sm font-semibold text-gray-700 block mb-1">Full Name</label>
-                  <input
-                    type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    placeholder="John Doe"
-                    disabled={isSubmitting}
-                    className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all outline-none bg-gray-50"
-                  />
-                </div>
-
-                {/* Email Input */}
-                <div>
-                  <label className="text-sm font-semibold text-gray-700 block mb-1">Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="you@example.com"
-                    disabled={isSubmitting}
-                    className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all outline-none bg-gray-50"
-                  />
-                </div>
-
-                {/* Password Input with Toggle */}
-                <div>
-                  <label className="text-sm font-semibold text-gray-700 block mb-1">Password</label>
-                  <div className="relative">
-                    <input
-                      type={showPassword ? 'text' : 'password'}
-                      name="password"
-                      value={formData.password}
-                      onChange={handleChange}
-                      placeholder="••••••••"
-                      disabled={isSubmitting}
-                      className="w-full px-5 py-3 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all outline-none bg-gray-50 pr-12"
-                    />
-                    <button type="button" onClick={togglePasswordVisibility} className="absolute inset-y-0 right-0 px-4 flex items-center text-gray-400 hover:text-gray-600 transition-colors">
-                      {showPassword ? (<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" /></svg>) : (<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.522 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>)}
-                    </button>
-                  </div>
-
-                  {/* Password Strength Meter */}
-                  {formData.password && (
-                    <div className="mt-2">
-                      <div className="flex items-center space-x-2 mb-1">
-                        <div className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${passwordStrength === 'Weak' ? 'bg-red-500' : passwordStrength === 'Medium' ? 'bg-yellow-500' : passwordStrength === 'Strong' ? 'bg-green-500' : 'bg-gray-200'}`}></div>
-                        <div className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${passwordStrength === 'Medium' || passwordStrength === 'Strong' ? (passwordStrength === 'Medium' ? 'bg-yellow-500' : 'bg-green-500') : 'bg-gray-200'}`}></div>
-                        <div className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${passwordStrength === 'Strong' ? 'bg-green-500' : 'bg-gray-200'}`}></div>
-                      </div>
-                      <div className="flex justify-between items-start">
-                        <p className={`text-xs font-semibold ${passwordStrength === 'Weak' ? 'text-red-500' : passwordStrength === 'Medium' ? 'text-yellow-600' : 'text-green-600'}`}>
-                          {passwordStrength && `${passwordStrength} Password`}
-                        </p>
-                        {nameInPasswordError && (
-                          <p className="text-xs font-bold text-red-600 ml-2 animate-pulse">
-                            {nameInPasswordError}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Terms and Conditions Checkbox */}
-                <div className="flex items-center">
-                  <input
-                    id="terms-and-conditions"
-                    name="terms-and-conditions"
-                    type="checkbox"
-                    checked={agreedToTerms}
-                    onChange={(e) => setAgreedToTerms(e.target.checked)}
-                    className="h-5 w-5 text-green-600 focus:ring-green-500 border-gray-300 rounded cursor-pointer"
-                  />
-                  <label htmlFor="terms-and-conditions" className="ml-3 block text-sm text-gray-700">
-                    I agree to the{' '}
-                    <button type="button" onClick={() => setTermsModalOpen(true)} className="font-bold text-green-600 hover:text-green-700 hover:underline">
-                      Terms and Conditions
-                    </button>
-                  </label>
-                </div>
-
-                {/* ReCAPTCHA */}
-                <div className="flex justify-center">
-                  <ReCAPTCHA
-                    sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                    onChange={(token) => setCaptchaToken(token)}
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting || !agreedToTerms || passwordStrength !== 'Strong' || !captchaToken || nameInPasswordError}
-                  className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 px-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-0.5 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? 'Creating Account...' : 'Create Account'}
-                </button>
-              </form>
-
-              <div className="mt-6">
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-300"></div>
-                  </div>
-                  <div className="relative flex justify-center text-sm">
-                    <span className="px-2 bg-white text-gray-500">Or sign up with</span>
-                  </div>
-                </div>
-
-                <div className="mt-6 flex justify-center">
-                  <GoogleLogin
-                    onSuccess={async (credentialResponse) => {
-                      try {
-                        const { data } = await api.post('/auth/google-login', { token: credentialResponse.credential });
-                        login(data); // This handles navigation
-                        toast.success('Google Login successful!');
-                      } catch (error) {
-                        toast.error(error.response?.data?.message || 'Google Login failed.');
-                      }
-                    }}
-                    onError={() => {
-                      toast.error('Google Signup Failed');
-                    }}
-                  />
-                </div>
-              </div>
-
-              <p className="text-center text-sm text-gray-500 mt-8">
-                Already have an account?{' '}
-                <Link to="/login" className="font-bold text-green-600 hover:text-green-700 hover:underline transition-colors">
-                  Login
-                </Link>
-              </p>
-            </div>
+          <div className="text-center mt-8 max-w-md">
+            <h2 className="text-3xl font-bold mb-4">Join the Revolution.</h2>
+            <p className="text-slate-400 text-lg leading-relaxed">
+              Create your account today to unlock exclusive deals, personalized recommendations, and a premium shopping experience.
+            </p>
           </div>
+        </div>
+
+        <div className="relative z-10 text-sm text-slate-500 text-center">
+          &copy; {new Date().getFullYear()} Gadget_Ghar. All rights reserved.
         </div>
       </div>
 
-      {/* Render the modal component */}
+      {/* RIGHT SIDE: Signup Form */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 overflow-y-auto">
+        <div className="w-full max-w-md space-y-8">
+          {/* Mobile Logo */}
+          <div className="lg:hidden flex justify-center mb-6">
+            <Link to="/">
+              <img src="/Gadget_logo.png" alt="Gadget_Ghar" className="h-12 w-auto" />
+            </Link>
+          </div>
+
+          <div className="text-center lg:text-left">
+            <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Create an account</h2>
+            <p className="mt-2 text-slate-600">Enter your details to get started.</p>
+          </div>
+
+          <div className="space-y-6">
+            <div className="w-full">
+              <GoogleLogin
+                onSuccess={async (credentialResponse) => {
+                  try {
+                    const { data } = await api.post('/auth/google-login', { token: credentialResponse.credential });
+                    login(data);
+                    toast.success('Google Login successful!');
+                  } catch (error) {
+                    toast.error(error.response?.data?.message || 'Google Login failed.');
+                  }
+                }}
+                onError={() => toast.error('Google Signup Failed')}
+                useOneTap
+                size="large"
+                width="100%"
+              />
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-slate-200"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-white text-slate-500">Or sign up with email</span>
+              </div>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label htmlFor="fullName" className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <User className="h-5 w-5 text-slate-400" />
+                  </div>
+                  <input
+                    type="text"
+                    name="fullName"
+                    id="fullName"
+                    className="block w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-lg leading-5 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 sm:text-sm transition-all"
+                    placeholder="Full Name"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Mail className="h-5 w-5 text-slate-400" />
+                  </div>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    className="block w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-lg leading-5 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 sm:text-sm transition-all"
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="password" class="block text-sm font-medium text-slate-700 mb-1">Password</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Lock className="h-5 w-5 text-slate-400" />
+                  </div>
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    name="password"
+                    id="password"
+                    className="block w-full pl-10 pr-10 py-2.5 border border-slate-300 rounded-lg leading-5 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 sm:text-sm transition-all"
+                    placeholder="Create a password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600"
+                  >
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  </button>
+                </div>
+
+                {formData.password && (
+                  <div className="mt-2 space-y-2">
+                    <div className="flex h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                      <div className={`flex-1 transition-all duration-300 ${passwordStrength === 'Weak' ? 'bg-red-500' : passwordStrength === 'Medium' ? 'bg-yellow-500' : passwordStrength === 'Strong' ? 'bg-green-500' : 'bg-transparent'}`}></div>
+                      <div className={`flex-1 transition-all duration-300 ${passwordStrength === 'Medium' || passwordStrength === 'Strong' ? (passwordStrength === 'Medium' ? 'bg-yellow-500' : 'bg-green-500') : 'bg-transparent'}`}></div>
+                      <div className={`flex-1 transition-all duration-300 ${passwordStrength === 'Strong' ? 'bg-green-500' : 'bg-transparent'}`}></div>
+                    </div>
+                    <div className="flex justify-between items-start">
+                      <p className={`text-xs font-semibold ${passwordStrength === 'Weak' ? 'text-red-500' : passwordStrength === 'Medium' ? 'text-yellow-600' : 'text-green-600'}`}>
+                        {passwordStrength && `${passwordStrength} Password`}
+                      </p>
+                      {nameInPasswordError && (
+                        <p className="text-xs font-bold text-red-500 flex items-center gap-1">
+                          <AlertCircle size={10} /> {nameInPasswordError}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="flex items-start">
+                <div className="flex items-center h-5">
+                  <input
+                    id="terms"
+                    name="terms"
+                    type="checkbox"
+                    checked={agreedToTerms}
+                    onChange={(e) => setAgreedToTerms(e.target.checked)}
+                    className="focus:ring-sky-500 h-4 w-4 text-sky-600 border-gray-300 rounded"
+                  />
+                </div>
+                <div className="ml-3 text-sm">
+                  <label htmlFor="terms" className="font-medium text-slate-700">I agree to the <button type="button" onClick={() => setTermsModalOpen(true)} className="text-sky-600 hover:text-sky-500 underline">Terms and Conditions</button></label>
+                </div>
+              </div>
+
+              <div className="flex justify-center transform scale-90 sm:scale-100 origin-center">
+                <ReCAPTCHA
+                  sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                  onChange={(token) => setCaptchaToken(token)}
+                  theme="light"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting || !agreedToTerms || passwordStrength !== 'Strong' || !captchaToken || nameInPasswordError}
+                className="w-full flex justify-center items-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              >
+                {isSubmitting ? <Loader2 className="animate-spin h-5 w-5" /> : <>Create Account <ArrowRight className="ml-2 h-4 w-4" /></>}
+              </button>
+
+            </form>
+
+            <p className="mt-6 text-center text-sm text-slate-600">
+              Already have an account?{' '}
+              <Link to="/login" className="font-semibold text-sky-600 hover:text-sky-500 hover:underline">
+                Sign in
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
       <TermsModal isOpen={isTermsModalOpen} onClose={() => setTermsModalOpen(false)} />
-    </>
+    </div>
   );
 };
 
 export default SignupPage;
-export { SignupPage };
-export { NavigationContext } from '../../context/NavigationContext';

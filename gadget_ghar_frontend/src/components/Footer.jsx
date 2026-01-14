@@ -37,41 +37,41 @@ const Footer = () => {
 
                     {/* QUICK LINKS */}
                     <div>
-                        <h4 className="font-semibold text-gray-800 mb-4 tracking-wide">Quick Links</h4>
+                        <h4 className="font-semibold text-gray-800 mb-4 tracking-wide uppercase text-xs">Quick Links</h4>
                         <ul className="space-y-3 text-sm">
-                            <li><button onClick={() => handleNavigate('/#hero-section')} className="text-gray-500 hover:text-green-600 transition-colors">Home</button></li>
-                            <li><button onClick={() => handleNavigate('/#featured-products')} className="text-gray-500 hover:text-green-600 transition-colors">Products</button></li>
-                            <li><button onClick={() => handleNavigate('/#why-choose-us')} className="text-gray-500 hover:text-green-600 transition-colors">About Us</button></li>
+                            <li><button onClick={() => handleNavigate('/#hero-section')} className="text-gray-500 hover:text-sky-600 transition-colors">Home</button></li>
+                            <li><button onClick={() => handleNavigate('/#featured-products')} className="text-gray-500 hover:text-sky-600 transition-colors">Products</button></li>
+                            <li><button onClick={() => handleNavigate('/#why-choose-us')} className="text-gray-500 hover:text-sky-600 transition-colors">About Us</button></li>
                         </ul>
                     </div>
 
                     {/* CONTACT INFO */}
                     <div>
-                        <h4 className="font-semibold text-gray-800 mb-4 tracking-wide">Contact Us</h4>
+                        <h4 className="font-semibold text-gray-800 mb-4 tracking-wide uppercase text-xs">Contact Us</h4>
                         <ul className="space-y-3 text-sm">
                             <li className="flex items-center">
-                                <FaPhoneAlt className="text-green-600 mr-3" />
-                                <a href="tel:9849423853" className="text-gray-500 hover:text-green-600 transition-colors">9849423853</a>
+                                <FaPhoneAlt className="text-sky-500 mr-3" />
+                                <a href="tel:9849423853" className="text-gray-500 hover:text-sky-600 transition-colors">9849423853</a>
                             </li>
                             <li className="flex items-center">
-                                <FaEnvelope className="text-green-600 mr-3" />
-                                <a href="mailto:gadgetghar@gmail.com" className="text-gray-500 hover:text-green-600 transition-colors">gadgetghar@gmail.com</a>
+                                <FaEnvelope className="text-sky-500 mr-3" />
+                                <a href="mailto:gadgetghar@gmail.com" className="text-gray-500 hover:text-sky-600 transition-colors">gadgetghar@gmail.com</a>
                             </li>
                         </ul>
                     </div>
 
                     {/* NEWSLETTER */}
                     <div>
-                        <h4 className="font-semibold text-gray-800 mb-4 tracking-wide">Stay Updated</h4>
+                        <h4 className="font-semibold text-gray-800 mb-4 tracking-wide uppercase text-xs">Stay Updated</h4>
                         <p className="text-gray-500 mb-4 text-sm">Subscribe for updates and exclusive offers.</p>
                         <form className="flex" onSubmit={(e) => e.preventDefault()}>
                             <input
                                 type="email"
                                 placeholder="your@email.com"
-                                className="w-full rounded-l-md px-4 py-2 bg-gray-100 border border-gray-300 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                className="w-full rounded-l-lg px-4 py-2.5 bg-gray-50 border border-gray-200 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all"
                                 aria-label="Email for newsletter"
                             />
-                            <button type="submit" className="bg-green-600 px-4 rounded-r-md text-white font-semibold hover:bg-green-700 transition-colors text-sm">
+                            <button type="submit" className="bg-sky-500 px-5 rounded-r-lg text-white font-bold hover:bg-sky-600 transition-colors text-sm shadow-md shadow-sky-500/20">
                                 Go
                             </button>
                         </form>

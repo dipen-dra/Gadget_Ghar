@@ -26,32 +26,32 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-2">
 
           <Link to="/" className="flex items-center">
-            <img src="/Gadget_logo.png" alt="Gadget_Ghar Logo" className="h-14 w-auto" />
+            <img src="/Gadget_logo.png" alt="Gadget_Ghar Logo" className="h-24 w-auto -my-6 relative z-50" />
           </Link>
 
 
           <div className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("hero-section")}
-              className="text-gray-600 hover:text-green-500 cursor-pointer"
+              className="text-gray-600 hover:text-sky-600 font-medium transition-colors cursor-pointer"
             >
               Home
             </button>
             <button
               onClick={() => scrollToSection("featured-products")}
-              className="text-gray-600 hover:text-green-500 cursor-pointer"
+              className="text-gray-600 hover:text-sky-600 font-medium transition-colors cursor-pointer"
             >
               Products
             </button>
             <button
               onClick={() => scrollToSection("why-choose-us")}
-              className="text-gray-600 hover:text-green-500 cursor-pointer"
+              className="text-gray-600 hover:text-sky-600 font-medium transition-colors cursor-pointer"
             >
               About
             </button>
             <button
               onClick={() => scrollToSection("footer")}
-              className="text-gray-600 hover:text-green-500 cursor-pointer"
+              className="text-gray-600 hover:text-sky-600 font-medium transition-colors cursor-pointer"
             >
               Contact
             </button>
@@ -59,12 +59,12 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             {user ? (
               <>
-                <Link to={user.role === 'admin' ? "/admin/dashboard" : "/dashboard"} className="text-gray-800 font-semibold hover:text-green-500">
+                <Link to={user.role === 'admin' ? "/admin/dashboard" : "/dashboard"} className="text-gray-800 font-semibold hover:text-sky-600 transition-colors">
                   Welcome, {user.fullName}
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+                  className="bg-red-500 text-white px-5 py-2 rounded-full hover:bg-red-600 transition-all hover:shadow-lg shadow-red-500/20"
                 >
                   Logout
                 </button>
@@ -72,7 +72,7 @@ const Navbar = () => {
             ) : (
               <Link
                 to="/login"
-                className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+                className="bg-sky-500 text-white px-6 py-2.5 rounded-full hover:bg-sky-600 transition-all hover:shadow-lg shadow-sky-500/30 font-semibold"
               >
                 Login
               </Link>
@@ -80,7 +80,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </nav>
+    </nav >
   );
 };
 

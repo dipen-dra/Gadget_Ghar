@@ -23,14 +23,14 @@ const CategoryNavbar = ({ selectedCategory, onCategoryChange }) => {
     const CategoryButton = ({ id, name }) => (
         <button
             onClick={() => onCategoryChange(id)}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap mx-1.5 flex-shrink-0 ${selectedCategory === id ? 'bg-green-600 text-white shadow' : 'bg-white text-gray-700 hover:bg-gray-200'}`}
+            className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap mx-1.5 flex-shrink-0 ${selectedCategory === id ? 'bg-sky-600 text-white shadow' : 'bg-white text-gray-700 hover:bg-gray-200'}`}
         >
             {name}
         </button>
     );
 
     return (
-        <nav className="bg-white shadow-sm sticky top-0 z-10 border-b-2 border-green-200">
+        <nav className="bg-white shadow-sm sticky top-0 z-10 border-b-2 border-sky-100">
             <div className="flex items-center justify-center px-2 sm:px-4 md:px-6 py-3 overflow-x-auto">
                 {isLoading ? (
                     <p className="text-sm text-gray-500 px-4">Loading categories...</p>
@@ -50,7 +50,7 @@ const CartIndicator = () => {
     const { cartItems } = useContext(CartContext);
     const itemCount = cartItems ? cartItems.reduce((sum, item) => sum + item.quantity, 0) : 0;
     if (itemCount === 0) return null;
-    return <span className="absolute -top-1 -right-1 flex items-center justify-center h-5 w-5 rounded-full bg-green-600 text-white text-xs font-bold">{itemCount}</span>;
+    return <span className="absolute -top-1 -right-1 flex items-center justify-center h-5 w-5 rounded-full bg-sky-600 text-white text-xs font-bold">{itemCount}</span>;
 };
 
 
@@ -93,8 +93,8 @@ const UserDashboard = () => {
             to={to}
             onClick={() => setIsSidebarOpen(false)}
             className={`flex items-center gap-4 px-4 py-3 rounded-lg transition-colors duration-200 ${location.pathname.startsWith(to)
-                ? 'bg-green-600 text-white font-semibold'
-                : 'text-gray-600 hover:bg-green-50'
+                ? 'bg-sky-600 text-white font-semibold'
+                : 'text-gray-600 hover:bg-sky-50'
                 }`}
         >
             <Icon size={22} />
@@ -139,7 +139,7 @@ const UserDashboard = () => {
             </div>
 
             <div className="flex-1 flex flex-col overflow-hidden">
-                <header className="bg-white p-4 flex justify-between items-center z-20 border-b-2 border-green-200">
+                <header className="bg-white p-4 flex justify-between items-center z-20 border-b-2 border-sky-100">
                     <button onClick={() => setIsSidebarOpen(true)} className="lg:hidden text-gray-600">
                         <Menu size={28} />
                     </button>
@@ -190,7 +190,7 @@ const UserDashboard = () => {
             <div className="fixed bottom-6 right-6 z-30">
                 <button
                     onClick={toggleChatbot}
-                    className="p-4 bg-green-600 text-white rounded-full shadow-lg hover:bg-green-700 transition-transform transform hover:scale-110"
+                    className="p-4 bg-sky-600 text-white rounded-full shadow-lg hover:bg-sky-700 transition-transform transform hover:scale-110"
                     aria-label="Toggle Chatbot"
                 >
                     {isChatbotVisible ? <X size={24} /> : <MessageSquare size={24} />}

@@ -39,7 +39,7 @@ const ProfileInputField = ({ name, value, onChange, label, type = "text" }) => (
     <div>
         <label htmlFor={name} className="text-sm font-medium text-gray-700">{label}</label>
         <input id={name} name={name} type={type} value={value} onChange={onChange}
-            className="mt-1 w-full p-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition" />
+            className="mt-1 w-full p-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition" />
     </div>
 );
 
@@ -176,7 +176,7 @@ const ProfilePage = () => {
     const TabButton = ({ tabName, icon: Icon, label }) => (
         <button
             onClick={() => setActiveTab(tabName)}
-            className={`flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-lg transition-all ${activeTab === tabName ? 'bg-green-600 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'
+            className={`flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-lg transition-all ${activeTab === tabName ? 'bg-sky-600 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'
                 }`}
         >
             <Icon size={18} />
@@ -185,7 +185,7 @@ const ProfilePage = () => {
     );
 
     if (isUserLoading && !initialUser) {
-        return <div className="flex justify-center items-center h-screen"><Loader2 className="animate-spin text-green-600" size={48} /></div>;
+        return <div className="flex justify-center items-center h-screen"><Loader2 className="animate-spin text-sky-600" size={48} /></div>;
     }
 
     if (userError) {
@@ -217,17 +217,17 @@ const ProfilePage = () => {
                 </div>
             </div>
 
-            <div className="p-6 md:p-8 border-b bg-green-50/50">
+            <div className="p-6 md:p-8 border-b bg-sky-50/50">
                 <div className="flex items-center gap-4">
-                    <Gift className="text-green-500" size={32} />
+                    <Gift className="text-sky-500" size={32} />
                     <div>
                         <h3 className="text-lg font-bold text-gray-800">Gadget Points</h3>
-                        <p className="text-3xl font-bold text-green-600">{points}</p>
+                        <p className="text-3xl font-bold text-sky-600">{points}</p>
                     </div>
                 </div>
                 <div className="mt-4">
                     <div className="w-full bg-gray-200 rounded-full h-2.5">
-                        <div className="bg-green-500 h-2.5 rounded-full transition-all duration-500" style={{ width: `${progressPercentage}%` }}></div>
+                        <div className="bg-sky-500 h-2.5 rounded-full transition-all duration-500" style={{ width: `${progressPercentage}%` }}></div>
                     </div>
                     <p className="text-xs text-gray-500 mt-2 text-right">
                         {points < 150 ? `${150 - points} points until your next 25% discount!` : "Congratulations! You have a 25% discount available!"}
@@ -249,7 +249,7 @@ const ProfilePage = () => {
                         <div className="flex justify-between items-center mb-6">
                             <h3 className="text-xl font-bold text-gray-800">Personal Information</h3>
                             {!isEditMode && (
-                                <button onClick={() => setIsEditMode(true)} className="flex items-center gap-2 px-4 py-2 text-sm bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                                <button onClick={() => setIsEditMode(true)} className="flex items-center gap-2 px-4 py-2 text-sm bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition">
                                     <Edit size={14} /> Edit
                                 </button>
                             )}
@@ -264,7 +264,7 @@ const ProfilePage = () => {
                                             <label htmlFor="location" className="text-sm font-medium text-gray-700">Location</label>
                                             <div className="mt-1 flex gap-2">
                                                 <input id="location" name="location" type="text" value={formData.location} onChange={handleInputChange} placeholder="Click pin to fetch location"
-                                                    className="flex-grow p-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition" />
+                                                    className="flex-grow p-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition" />
                                                 <button type="button" onClick={handleFetchLocation} disabled={isFetchingLocation}
                                                     className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center justify-center transition disabled:opacity-50 disabled:cursor-not-allowed">
                                                     {isFetchingLocation ? <Loader2 className="animate-spin" /> : <MapPin />}
@@ -280,7 +280,7 @@ const ProfilePage = () => {
 
                                         <div className="md:col-span-2 mt-6 pt-6 border-t space-y-6">
                                             <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-                                                <Shield className="text-green-600" /> Security Settings
+                                                <Shield className="text-sky-600" /> Security Settings
                                             </h3>
 
                                             {/* 2FA Toggle */}
@@ -299,7 +299,7 @@ const ProfilePage = () => {
                                                         disabled={profileUpdateMutation.isLoading}
                                                         className="sr-only peer"
                                                     />
-                                                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-sky-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sky-600"></div>
                                                 </label>
                                             </div>
 
@@ -311,7 +311,7 @@ const ProfilePage = () => {
                                                 </div>
                                                 <div>
                                                     {user.isPinSet ? (
-                                                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-100 text-green-700 text-sm font-medium">
+                                                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-100 text-sky-700 text-sm font-medium">
                                                             <CheckCircle size={14} /> PIN Active
                                                         </span>
                                                     ) : (
@@ -333,7 +333,7 @@ const ProfilePage = () => {
                                 <div className="flex justify-end gap-4 pt-4 border-t mt-6">
                                     <button type="button" onClick={() => setIsEditMode(false)} className="px-5 py-2.5 bg-gray-200 text-gray-800 font-semibold rounded-lg hover:bg-gray-300 transition">Cancel</button>
                                     <button type="submit" disabled={profileUpdateMutation.isLoading}
-                                        className="flex items-center justify-center gap-2 px-5 py-2.5 bg-green-600 text-white font-semibold rounded-lg shadow-sm hover:bg-green-700 transition disabled:opacity-50">
+                                        className="flex items-center justify-center gap-2 px-5 py-2.5 bg-sky-600 text-white font-semibold rounded-lg shadow-sm hover:bg-sky-700 transition disabled:opacity-50">
                                         {profileUpdateMutation.isLoading ? <Loader2 className="animate-spin" /> : <><Save size={16} /> Save Changes</>}
                                     </button>
                                 </div>

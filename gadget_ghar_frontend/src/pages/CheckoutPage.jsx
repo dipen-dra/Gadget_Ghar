@@ -111,7 +111,7 @@ const CheckoutPage = () => {
     const discountAmount = applyDiscount && canApplyDiscount ? totalAmount * 0.25 : 0;
     const finalAmount = totalAmount + deliveryFee - discountAmount;
 
-    if (isLoadingAuth) return <div className="flex justify-center items-center min-h-[60vh]"><Loader2 className="animate-spin text-green-500 h-12 w-12" /></div>;
+    if (isLoadingAuth) return <div className="flex justify-center items-center min-h-[60vh]"><Loader2 className="animate-spin text-sky-500 h-12 w-12" /></div>;
     if (cartItems.length === 0) return <div className="text-center p-12"><h2 className="text-2xl font-semibold">Your cart is empty.</h2></div>;
 
     return (
@@ -127,7 +127,7 @@ const CheckoutPage = () => {
                     <div>
                         <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">Delivery Address</label>
                         <textarea id="address" placeholder="Enter your full delivery address..." value={address} onChange={(e) => setAddress(e.target.value)} required className="w-full p-3 border rounded-lg min-h-[120px]" />
-                        <button type="button" onClick={handleFetchLocation} disabled={isFetchingLocation} className="mt-2 flex items-center gap-2 text-sm text-green-600 font-semibold hover:text-green-800 disabled:opacity-50">
+                        <button type="button" onClick={handleFetchLocation} disabled={isFetchingLocation} className="mt-2 flex items-center gap-2 text-sm text-sky-600 font-semibold hover:text-sky-800 disabled:opacity-50">
                             {isFetchingLocation ? <Loader2 size={16} className="animate-spin" /> : <MapPin size={16} />}
                             {isFetchingLocation ? 'Fetching...' : 'Use My Current Location'}
                         </button>
@@ -138,16 +138,16 @@ const CheckoutPage = () => {
                     <div className="bg-white p-6 rounded-2xl shadow-lg">
                         <h2 className="text-xl font-semibold border-b pb-3 mb-4">Order Summary</h2>
                         {canApplyDiscount && (
-                            <div className="mt-4 p-3 bg-green-50 border-l-4 border-green-500 rounded-lg cursor-pointer" onClick={handleDiscountToggle}>
+                            <div className="mt-4 p-3 bg-sky-50 border-l-4 border-sky-500 rounded-lg cursor-pointer" onClick={handleDiscountToggle}>
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-3">
-                                        <Gift className="text-green-600" size={24} />
+                                        <Gift className="text-sky-600" size={24} />
                                         <div>
-                                            <h4 className="font-bold text-green-800">Use 25% Discount</h4>
+                                            <h4 className="font-bold text-sky-800">Use 25% Discount</h4>
                                             <p className="text-xs text-gray-600">You have {user.groceryPoints} points</p>
                                         </div>
                                     </div>
-                                    <input type="checkbox" checked={applyDiscount} readOnly className="h-5 w-5 text-green-600 border-gray-300 rounded focus:ring-green-500" />
+                                    <input type="checkbox" checked={applyDiscount} readOnly className="h-5 w-5 text-sky-600 border-gray-300 rounded focus:ring-sky-500" />
                                 </div>
                             </div>
                         )}
@@ -155,7 +155,7 @@ const CheckoutPage = () => {
                             <div className="flex justify-between"><span>Items Total</span><span>₹{totalAmount.toFixed(2)}</span></div>
                             <div className="flex justify-between"><span>Delivery Fee</span><span>₹{deliveryFee.toFixed(2)}</span></div>
                             {applyDiscount && discountAmount > 0 && (
-                                <div className="flex justify-between font-semibold text-green-600">
+                                <div className="flex justify-between font-semibold text-sky-600">
                                     <span>Discount (25%)</span>
                                     <span>- ₹{discountAmount.toFixed(2)}</span>
                                 </div>
@@ -168,20 +168,20 @@ const CheckoutPage = () => {
                         <div className="mt-6 border-t pt-4">
                             <h3 className="font-semibold text-center mb-3">Payment Method</h3>
                             <div className="space-y-3">
-                                <div onClick={() => setPaymentMethod('cod')} className={`flex items-center p-3 border rounded-lg cursor-pointer transition-all ${paymentMethod === 'cod' ? 'ring-2 ring-green-500 bg-green-50' : 'hover:bg-gray-50'}`}>
-                                    <input type="radio" id="cod" name="paymentMethod" value="cod" checked={paymentMethod === 'cod'} readOnly className="h-4 w-4 text-green-600" />
+                                <div onClick={() => setPaymentMethod('cod')} className={`flex items-center p-3 border rounded-lg cursor-pointer transition-all ${paymentMethod === 'cod' ? 'ring-2 ring-sky-500 bg-sky-50' : 'hover:bg-gray-50'}`}>
+                                    <input type="radio" id="cod" name="paymentMethod" value="cod" checked={paymentMethod === 'cod'} readOnly className="h-4 w-4 text-sky-600" />
                                     <label htmlFor="cod" className="ml-3 text-sm font-medium text-gray-700">Cash on Delivery</label>
                                 </div>
-                                <div onClick={() => setPaymentMethod('esewa')} className={`flex items-center justify-between p-3 border rounded-lg cursor-pointer transition-all ${paymentMethod === 'esewa' ? 'ring-2 ring-green-500 bg-green-50' : 'hover:bg-gray-50'}`}>
+                                <div onClick={() => setPaymentMethod('esewa')} className={`flex items-center justify-between p-3 border rounded-lg cursor-pointer transition-all ${paymentMethod === 'esewa' ? 'ring-2 ring-sky-500 bg-sky-50' : 'hover:bg-gray-50'}`}>
                                     <div className="flex items-center">
-                                        <input type="radio" id="esewa" name="paymentMethod" value="esewa" checked={paymentMethod === 'esewa'} readOnly className="h-4 w-4 text-green-600" />
+                                        <input type="radio" id="esewa" name="paymentMethod" value="esewa" checked={paymentMethod === 'esewa'} readOnly className="h-4 w-4 text-sky-600" />
                                         <label htmlFor="esewa" className="ml-3 text-sm font-medium text-gray-700">Pay with eSewa</label>
                                     </div>
                                     <img src="/esewalogo.png" alt="eSewa" className="h-6" />
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" disabled={codOrderMutation.isLoading || esewaMutation.isLoading} className="mt-6 w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition flex items-center justify-center disabled:bg-gray-400">
+                        <button type="submit" disabled={codOrderMutation.isLoading || esewaMutation.isLoading} className="mt-6 w-full bg-sky-600 text-white font-bold py-3 rounded-lg hover:bg-sky-700 transition flex items-center justify-center disabled:bg-gray-400">
                             {(codOrderMutation.isLoading || esewaMutation.isLoading) ? <Loader2 className="animate-spin" /> : 'Confirm Order'}
                         </button>
                     </div>

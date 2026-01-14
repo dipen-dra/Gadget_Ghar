@@ -26,16 +26,12 @@ export default defineConfig({
   },
   // Add this 'server' block
   server: {
-    https: {
-      key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
-      cert: fs.readFileSync(path.resolve(__dirname, 'server.cert')),
-    },
     host: true, // Listen on all local IPs
     proxy: {
       // Proxy requests that start with '/api'
       '/api': {
         // Forward them to your backend server
-        target: 'https://192.168.1.110:8081',
+        target: 'http://192.168.1.110:8081',
         secure: false, // Allow self-signed certificates for development
         // Necessary for virtual hosted sites
         changeOrigin: true,
