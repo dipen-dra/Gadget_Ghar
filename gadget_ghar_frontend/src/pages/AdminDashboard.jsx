@@ -714,7 +714,7 @@ const AdminDashboard = () => {
         <>
             <div className="p-4 flex items-center justify-between">
                 <a href="#dashboard" className="flex items-center gap-3">
-                    <img src="/Gadget_Ghar.png" alt="Gadget_Ghar Admin" className="h-12 w-auto" />
+                    <img src="/Gadget_logo.png" alt="Gadget_Ghar Admin" className="h-12 w-auto" />
                 </a>
                 <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden text-gray-500"><X size={24} /></button>
             </div>

@@ -26,7 +26,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-2">
 
           <Link to="/" className="flex items-center">
-            <img src="/Gadget_Ghar.png" alt="Gadget_Ghar Logo" className="h-14 w-auto" />
+            <img src="/Gadget_logo.png" alt="Gadget_Ghar Logo" className="h-14 w-auto" />
           </Link>
 
 

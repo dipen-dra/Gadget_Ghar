@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api/api';
 // import logo from '../assets/hamro2.png'; // Unused
-const logo = "/Gadget_Ghar.png";
+const logo = "/Gadget_logo.png";
 
 // ... inside component ...
 <img src={logo} alt="Gadget_Ghar" className="h-16 w-auto" />

@@ -29,7 +29,7 @@ const Footer = () => {
 
                     {/* LOGO / MISSION */}
                     <div className="col-span-1 sm:col-span-2 md:col-span-1">
-                        <img src="/Gadget_Ghar.png" alt="Gadget_Ghar Logo" className="h-10 w-auto mb-3" />
+                        <img src="/Gadget_logo.png" alt="Gadget_Ghar Logo" className="h-10 w-auto mb-3" />
                         <p className="text-gray-500 text-sm leading-relaxed">
                             Your daily dose of tech, delivered right to your door with care and quality you can trust.
                         </p>
